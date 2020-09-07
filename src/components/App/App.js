@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import Dashboarder from '../Dashboard/Dashboard.js';
 
 import './App.css';
 
@@ -91,6 +92,14 @@ class App extends Component {
               path="/home"
               component={LandingPage}
               authRedirect="/user"
+            />
+
+            <ProtectedRoute
+ 
+              exact
+              path="/dashboard"
+              component={Dashboarder}
+              // authRedirect="/user"
             />
 
             {/* If none of the other routes matched, we will show a 404. */}
