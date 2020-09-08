@@ -1,0 +1,32 @@
+.menuImg {
+    height: 150px;
+    width: 150px;
+}
+
+.menuCards {
+    width: 200px;
+    display: inline-block;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 3px;
+}
+
+.menuViewLink {
+    text-decoration: none;
+    font-size: 15px;
+    text-align: center;
+    color: white;
+    padding: 10px 60px;
+    width: 200px;
+    background-color: #e6ac00
+}
+
+.menuViewLink:hover {
+    background-color: #997300;
+}
+
+.dashDeclaration {
+    text-align: center;
+}

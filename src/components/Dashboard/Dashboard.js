@@ -2,28 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { Link } from 'react-router-dom';
-//import uppyFunction from '../../redux/uppy.js'
 
-//material ui imports
-// import { makeStyles } from '@material-ui/core/styles';
-// import Card from '@material-ui/core/Card';
-// import CardActionArea from '@material-ui/core/CardActionArea';
-// import CardActions from '@material-ui/core/CardActions';
-// import CardContent from '@material-ui/core/CardContent';
-// import CardMedia from '@material-ui/core/CardMedia';
-// import Button from '@material-ui/core/Button';
-// import Typography from '@material-ui/core/Typography';
-
-// const useStyles = makeStyles({
-//     root: {
-//         maxWidth: 345,
-//     },
-//     media: {
-//         height: 140,
-//     },
-// });
-
-// let classes = useStyles();
+import './Dashboard.css';
 
     class Dashboarder extends Component {
 
@@ -54,14 +34,21 @@ import { Link } from 'react-router-dom';
                             See Dishes
                     </Link>
                     </div>
-                    <h2>Dash Component</h2>
-                    <button onClick={() => this.getMenus()}>click here</button>
+                    <h1 className="dashDeclaration">{this.props.store.user.username}'s Dashboard</h1>
+                    
+                    <br />
 
                     {/* {JSON.stringify(this.props.store.menuReducer)} */}
 
-                    {this.props.store.menuReducer.map((menu) => {
+                    {this.props.store.menuReducer.map((menu, i) => {
                         return(
+                            <div className="menuCards" id={i}>
+                            <img className="menuImg" alt="placeholder" 
+                            src="https://thestayathomechef.com/wp-content/uploads/2020/03/Classic-Chicken-Marsala-4-1-500x500.jpg">
+                            </img>
                             <p>{menu.title}</p>
+                            <Link className="menuViewLink" to="menu-view/:id">View Menu</Link>
+                            </div>
                         )
                     })}
                     
