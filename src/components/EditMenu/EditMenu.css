@@ -1,0 +1,39 @@
+.sideBar {
+    width: 150px;
+    height: 10000px;
+    float: left;
+    background-color: #222;
+    text-align: center;
+}
+
+.sideLinkBig {
+    float: left;
+    color: #f2f2f2;
+    background-color: #cc9900;
+    padding: 24px 10px;
+    text-decoration: none;
+    font-size: 15px;
+    text-align: center;
+    width: 130px;
+    margin-top: 10px;
+}
+
+.sideLinkBig:hover {
+    background-color: #997300;
+}
+
+.sideLinkSmall {
+    float: left;
+    color: #f2f2f2;
+    background-color: #222;
+    text-align: center;
+    padding: 24px 10px;
+    text-decoration: none;
+    font-size: 15px;
+    width: 130px;
+    margin-top: 10px;
+}
+
+.sideLinkSmall:hover {
+    background-color: black;
+}

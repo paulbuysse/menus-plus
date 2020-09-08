@@ -20,6 +20,12 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Dashboarder from '../Dashboard/Dashboard.js';
+import EditMenu from '../EditMenu/EditMenu.js'
+import AddMenu from '../AddMenu/AddMenu.js';
+import CreateDish from '../CreateDish/CreateDish.js';
+import DishList from '../DishList/DishList';
+import EditDish from '../EditDish/EditDish.js';
+import MenuDetails from '../MenuDetails/MenuDetails.js';
 
 import './App.css';
 
@@ -95,11 +101,47 @@ class App extends Component {
             />
 
             <ProtectedRoute
- 
+
               exact
               path="/dashboard"
               component={Dashboarder}
-              // authRedirect="/user"
+            // authRedirect="/user"
+            />
+
+            <ProtectedRoute
+              exact
+              path="/edit/menu"
+              component={EditMenu}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/add/menu"
+              component={AddMenu}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/add/dish"
+              component={CreateDish}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/dishlist"
+              component={DishList}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/edit/dish"
+              component={EditDish}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/menu/details"
+              component={MenuDetails}
             />
 
             {/* If none of the other routes matched, we will show a 404. */}
