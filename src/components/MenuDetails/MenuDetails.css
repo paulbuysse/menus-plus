@@ -1,0 +1,21 @@
+.dishImage {
+    height: 200px;
+    width: 200px;
+    float: right;
+    margin-right: 70px;
+    margin-top: 2.2%;
+    border: 2px solid black;
+}
+
+.menuPage {
+    width: 80%;
+    border: 2px solid black;
+    float: right;
+    margin-right: 60px;
+    text-align: center;
+}
+
+.dishItem {
+    height: 250px;
+    border-top: 2px solid black;
+}
