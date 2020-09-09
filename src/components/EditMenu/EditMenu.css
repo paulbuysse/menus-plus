@@ -37,3 +37,19 @@
 .sideLinkSmall:hover {
     background-color: black;
 }
+
+.sideLinkBigTop {
+    float: left;
+    color: #f2f2f2;
+    background-color: #cc9900;
+    padding: 24px 10px;
+    text-decoration: none;
+    font-size: 15px;
+    text-align: center;
+    width: 130px;
+    margin-top: 30px;
+}
+
+.sideLinkBigTop:hover {
+    background-color: #997300;
+}

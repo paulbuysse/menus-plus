@@ -17,8 +17,17 @@ class MenuDetails extends Component {
         return (
             <div>
 
+                <div className="menuInfoBar">
+
+                    <Link className="menuEditLink" to="/edit/menu">
+                        Edit Menu
+                    </Link>
+                    <h2>{this.state.heading}</h2>
+
+                </div>
+
                 <div className="sideBar">
-                    <Link className="sideLinkBig" to="/add/menu">
+                    <Link className="sideLinkBigTop" to="/add/menu">
                         Create New Menu
                     </Link>
                     <Link className="sideLinkBig" to="/add/dish">
@@ -33,14 +42,14 @@ class MenuDetails extends Component {
                     </Link>
                 </div>
 
-                <div className="menuInfoBar">
+                {/* <div className="menuInfoBar">
 
                 <Link className="menuEditLink" to="/edit/menu">
                         Edit Menu
                     </Link>
                     <h2>{this.state.heading}</h2>
                     
-                </div>
+                </div> */}
 
                 {/* {JSON.stringify(this.menuTitle)} */}
                 <div>

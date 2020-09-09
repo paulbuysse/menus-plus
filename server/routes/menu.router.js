@@ -7,7 +7,7 @@ const router = express.Router();
  */
 router.get('/:id', (req, res) => {
   // GET route code here
-  let id = req.params.id;
+  let id = req.user.id;
   const queryText = `SELECT "menus".title, "menus".id FROM "menus"
                     WHERE "user_id" = $1;`
 

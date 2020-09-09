@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { Link } from 'react-router-dom';
+import EditMenuItem from '../EditMenuItem/EditMenuItem.js';
 
-import './EditMenu.css'
+import './EditMenu.css';
 
 class EditMenu extends Component {
     state = {
@@ -14,7 +15,7 @@ class EditMenu extends Component {
         return (
             <div>
                 <div className="sideBar">
-                    <Link className="sideLinkBig" to="/add/menu">
+                    <Link className="sideLinkBigTop" to="/add/menu">
                         Create New Menu
                     </Link>
                     <Link className="sideLinkBig" to="/add/dish">
@@ -29,6 +30,32 @@ class EditMenu extends Component {
                     </Link>
                 </div>
                 <h2>{this.state.heading}</h2>
+
+            <select>
+                <option>poopoo</option>
+            </select>
+
+            <button>Add To Menu</button>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dish Name</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.props.store.currentMenuReducer.map((dish) => {
+                            return (
+                                <EditMenuItem
+                                dish={dish}
+                                history={this.props.history}
+                                />
+                            )
+                        })}
+                    </tbody>
+                </table>
             </div>
         );
     }
