@@ -13,9 +13,35 @@
     float: right;
     margin-right: 60px;
     text-align: center;
+    margin-top: 40px;
 }
 
 .dishItem {
     height: 250px;
     border-top: 2px solid black;
+}
+
+.menuInfoBar {
+    height: 30px;
+    color: white;
+    background-color: #222;
+    display: inline-block;
+    width: 88.13%;
+    float: right;
+    font-size: 10px;
+}
+
+.menuEditLink {
+    float: right;
+    text-decoration: none;
+    font-size: 15px;
+    text-align: center;
+    color: white;
+    padding: 6px 6px;
+    width: 200px;
+    background-color: #e6ac00
+}
+
+.menuEditLink:hover {
+    background-color: #997300;
 }

@@ -33,9 +33,16 @@ class MenuDetails extends Component {
                     </Link>
                 </div>
 
-                <h2>{this.state.heading}</h2>
+                <div className="menuInfoBar">
 
-                {JSON.stringify(this.menuTitle)}
+                <Link className="menuEditLink" to="/edit/menu">
+                        Edit Menu
+                    </Link>
+                    <h2>{this.state.heading}</h2>
+                    
+                </div>
+
+                {/* {JSON.stringify(this.menuTitle)} */}
                 <div>
                     <div className="menuPage">
                         <h1>{this.state.heading}</h1>
