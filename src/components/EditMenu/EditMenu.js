@@ -32,7 +32,7 @@ class EditMenu extends Component {
                 </div>
                 <h2>{this.state.heading}</h2>
 
-            <EditMenuAddDish menuId={this.props.match.params.id}/>
+            <EditMenuAddDish menuId={this.props.match.params.id} history={this.props.history}/>
 
                 <table>
                     <thead>

@@ -7,7 +7,7 @@ function* addToMenu(action) {
       let response = yield axios.post(`/api/menu/${action.payload.menu_id}`, action.payload);
       console.log(response.data);
     
-      //yield put({type: 'SET_MENUS', payload: response.data});
+      //yield put({type: 'SET_CURRENT_MENU'});
   } catch (error) {
     console.log('Menu get request failed', error);
   }

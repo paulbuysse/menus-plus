@@ -134,7 +134,7 @@ class App extends Component {
 
             <ProtectedRoute
               exact
-              path="/edit/dish"
+              path="/edit/dish/:id"
               component={EditDish}
             />
 

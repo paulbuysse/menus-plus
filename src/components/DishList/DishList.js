@@ -1,16 +1,67 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import { Link } from 'react-router-dom';
+import DishListItem from '../DishListItem/DishListItem.js';
 
 class DishList extends Component {
   state = {
     heading: 'Dish List Component',
   };
 
+  componentDidMount() {
+    this.fetchDishes();
+  }
+
+  fetchDishes = () => {
+    this.props.dispatch({ type: 'FETCH_DISHES' });
+  }
+
+  editDish = (dishId) => {
+    this.props.history.push(`/edit/dish/${dishId}`)
+  }
+
   render() {
     return (
       <div>
-        <h2>{this.state.heading}</h2>
+        <div className="sideBar">
+          <Link className="sideLinkBigTop" to="/add/menu">
+            Create New Menu
+                    </Link>
+          <Link className="sideLinkBig" to="/add/dish">
+            Create New Dish
+                    </Link>
+          <Link className="sideLinkSmall" to="/dashboard">
+            Dashboard
+                    </Link>
+          <br />
+          <Link className="sideLinkSmall" to="/dishlist">
+            See Dishes
+                    </Link>
+        </div>
+        < h2 > {this.state.heading}</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Dish Name</th>
+              <th>Price</th>
+              <th>Description</th>
+              <th>Image</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.props.store.dishes.map((dish) => {
+              return (
+                <DishListItem 
+                dish={dish}
+                />
+              )
+            })}
+          </tbody>
+        </table>
+
       </div>
     );
   }

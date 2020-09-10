@@ -24,12 +24,15 @@ class EditMenuAddDish extends Component {
 
     handleAdd = () => {
         this.props.dispatch({type: 'ADD_TO_MENU', payload: this.state})
+        this.props.dispatch({type: 'FETCH_MENUS', payload: { id: this.state.menu_id, user_id: this.props.store.user.id}})
+        this.props.dispatch({type: 'SET_CURRENT_MENU', payload: { id: this.state.menu_id, user_id: this.props.store.user.id}});
+        this.props.history.push(`/edit/menu/${this.props.menuId}`);
+        alert('Changes Saved!');
     }
 
     render() {
         return (
             <div>
-                <h1>{this.state.selectedDish}{this.state.menu_id}</h1>
                 <select onChange={(event) => { this.setState({ ...this.state, selectedDish: event.target.value }) }}>
                     <option value="0">Select a Dish</option>
                     {this.props.store.dishes.map((dishSelection) => {
