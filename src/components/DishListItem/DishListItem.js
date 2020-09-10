@@ -18,15 +18,32 @@ class DishListItem extends Component {
     };
 
     handleEdit = (event) => {
-        this.setState({ ...this.state, selectOption: event.target.value });
+        if (event.target.value === '1') {
+            this.setState({ ...this.state, selectOption: event.target.value, editName: true });
+        } else if (event.target.value === '2') {
+            this.setState({ ...this.state, selectOption: event.target.value, editPrice: true });
+        } else if (event.target.value === '3') {
+            this.setState({ ...this.state, selectOption: event.target.value, editDescription: true });
+        } else if (event.target.value === '4') {
+            this.setState({ ...this.state, selectOption: event.target.value, editImg: true });
+        }
 
-        console.log(this.state.selectOption)
     }
 
     handleSave = () => {
         console.log(this.state.selectOption)
 
-        this.setState({...this.state, selectOption: 0})
+        this.setState({
+            editName: false,
+            editPrice: false,
+            editDescription: false,
+            editImg: false,
+            selectOption: 0,
+            dishName: this.props.dish.name,
+            dishPrice: this.props.dish.price,
+            dishDescription: this.props.dish.description,
+            dishImg: this.props.dish.img_url
+        })
     }
 
     render() {
@@ -45,6 +62,8 @@ class DishListItem extends Component {
                     <td><input onChange={(event) => { this.setState({ ...this.state, dishImg: event.target.value }) }} /></td> :
                     <td><img className="dishImg" src={this.props.dish.img_url}></img></td>}
 
+                    {JSON.stringify(this.state.editName)}
+                    {JSON.stringify(this.state.selectOption)}
                 <h2>{this.state.selectOption}</h2>
                 <td>
                     {this.state.selectOption ?
