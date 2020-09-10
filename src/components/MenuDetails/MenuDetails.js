@@ -19,7 +19,7 @@ class MenuDetails extends Component {
 
                 <div className="menuInfoBar">
 
-                    <Link className="menuEditLink" to="/edit/menu">
+                    <Link className="menuEditLink" to={`/edit/menu/${this.props.match.params.id}`}>
                         Edit Menu
                     </Link>
                     <h2>{this.state.heading}</h2>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { Link } from 'react-router-dom';
 import EditMenuItem from '../EditMenuItem/EditMenuItem.js';
+import EditMenuAddDish from '../EditMenuAddDish/EditMenuAddDish.js';
 
 import './EditMenu.css';
 
@@ -31,11 +32,7 @@ class EditMenu extends Component {
                 </div>
                 <h2>{this.state.heading}</h2>
 
-            <select>
-                <option>poopoo</option>
-            </select>
-
-            <button>Add To Menu</button>
+            <EditMenuAddDish menuId={this.props.match.params.id}/>
 
                 <table>
                     <thead>

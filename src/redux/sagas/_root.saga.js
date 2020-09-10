@@ -5,6 +5,7 @@ import userSaga from './user.saga';
 import menuSaga from './menu.saga';
 import currentMenuSaga from './current.menu';
 import dishRemovalSaga from './dish.removal';
+import dishSaga from './dish.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,5 +22,6 @@ export default function* rootSaga() {
     menuSaga(),
     currentMenuSaga(),
     dishRemovalSaga(),
+    dishSaga(),
   ]);
 }

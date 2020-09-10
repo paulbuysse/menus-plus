@@ -22,6 +22,16 @@ router.delete('/:id', (req, res) => {
  */
 router.get('/', (req, res) => {
   // GET route code here
+  let id = req.user.id;
+  let queryText = `SELECT * FROM "dishes"
+                   WHERE "user_id" = $1;`;
+    
+    pool.query(queryText, [id]).then(result => {
+        res.send(result.rows);
+    }).catch(error => {
+        console.log('error in getting all dishes', error);
+        res.sendStatus(500);
+    })
 });
 
 /**

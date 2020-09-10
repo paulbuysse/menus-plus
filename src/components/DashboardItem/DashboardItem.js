@@ -16,7 +16,7 @@ class DashboardItem extends Component {
                     src="https://thestayathomechef.com/wp-content/uploads/2020/03/Classic-Chicken-Marsala-4-1-500x500.jpg">
                 </img>
                 <p>{this.props.menu.title}</p>
-                <Link onClick={() => this.setCurrentMenu()} className="menuViewLink" to="/menu/details/">View Menu</Link>
+                <Link onClick={() => this.setCurrentMenu()} className="menuViewLink" to={`/menu/details/${this.props.menu.id}`}>View Menu</Link>
             </div>
         );
     }

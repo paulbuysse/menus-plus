@@ -110,7 +110,7 @@ class App extends Component {
 
             <ProtectedRoute
               exact
-              path="/edit/menu"
+              path="/edit/menu/:id"
               component={EditMenu}
             />
 
@@ -140,7 +140,7 @@ class App extends Component {
 
             <ProtectedRoute
               exact
-              path="/menu/details"
+              path="/menu/details/:id"
               component={MenuDetails}
             />
 
