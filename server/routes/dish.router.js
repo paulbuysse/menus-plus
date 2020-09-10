@@ -41,4 +41,22 @@ router.post('/', (req, res) => {
   // POST route code here
 });
 
+router.put('/:id', (req, res) => {
+    console.log('got here', req.body, req.params, req.user.id);
+    let id = req.params.id;
+    let user_id = req.user.id;
+    let nameToUpdate = req.body.dishName;
+
+    let queryText = `UPDATE "dishes"
+    SET "name" = $1
+    WHERE "user_id" = $2 AND "id" = $3;`;
+
+    pool.query(queryText, [nameToUpdate, user_id, id]).then((result) => {
+        res.sendStatus(201);
+    }).catch((error) => {
+        console.log('error in put req', error);
+        res.sendStatus(500);
+    })
+});
+
 module.exports = router;

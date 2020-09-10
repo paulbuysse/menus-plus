@@ -14,7 +14,8 @@ class DishListItem extends Component {
         dishName: this.props.dish.name,
         dishPrice: this.props.dish.price,
         dishDescription: this.props.dish.description,
-        dishImg: this.props.dish.img_url
+        dishImg: this.props.dish.img_url,
+        dishId: this.props.dish.id,
     };
 
     handleEdit = (event) => {
@@ -31,7 +32,7 @@ class DishListItem extends Component {
     }
 
     handleSave = () => {
-        console.log(this.state.selectOption)
+        this.props.dispatch({type: 'UPDATE_DISH', payload: this.state})
 
         this.setState({
             editName: false,
@@ -54,7 +55,7 @@ class DishListItem extends Component {
                     <td>{this.props.dish.name}</td>}
                 {this.state.editPrice ?
                     <td><input onChange={(event) => { this.setState({ ...this.state, dishPrice: event.target.value }) }} /></td> :
-                    <td>{this.props.dish.price}</td>}
+                    <td>${this.props.dish.price}</td>}
                 {this.state.editDescription ?
                     <td><input onChange={(event) => { this.setState({ ...this.state, dishDescription: event.target.value }) }} /></td> :
                     <td>{this.props.dish.description}</td>}
