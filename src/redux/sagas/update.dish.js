@@ -7,7 +7,7 @@ function* updateDish(action) {
       let response = yield axios.put(`/api/dish/${action.payload.dishId}`, action.payload);
       console.log(response.data);
     
-      //yield put({type: 'SET_MENUS', payload: response.data});
+      yield put({type: 'FETCH_DISHES'});
   } catch (error) {
     console.log('Menu get request failed', error);
   }
