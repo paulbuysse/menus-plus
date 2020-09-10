@@ -22,6 +22,10 @@ class EditMenuAddDish extends Component {
         this.setState({ ...this.state, menu_id: this.props.menuId })
     }
 
+    handleAdd = () => {
+        this.props.dispatch({type: 'ADD_TO_MENU', payload: this.state})
+    }
+
     render() {
         return (
             <div>
@@ -40,7 +44,7 @@ class EditMenuAddDish extends Component {
                     }
                 </select>
 
-                <button>Add To Menu</button>
+                <button onClick={() => this.handleAdd()}>Add To Menu</button>
             </div>
         );
     }
