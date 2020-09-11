@@ -63,9 +63,6 @@ class DishListItem extends Component {
                     <td><input onChange={(event) => { this.setState({ ...this.state, dishImg: event.target.value }) }} /></td> :
                     <td><img className="dishImg" src={this.props.dish.img_url}></img></td>}
 
-                    {JSON.stringify(this.state.editName)}
-                    {JSON.stringify(this.state.selectOption)}
-                <h2>{this.state.selectOption}</h2>
                 <td>
                     {this.state.selectOption ?
                         <button onClick={() => {this.handleSave()}}>Save</button> :

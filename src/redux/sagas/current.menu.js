@@ -3,7 +3,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 function* setCurrentMenu(action) {
   try {
-      let response = yield axios.get(`/api/current/menu/${action.payload.id}`);
+      let response = yield axios.get(`/api/current/menu/${action.payload}`);
       console.log(response.data);
     
       yield put({type: 'APPLY_CURRENT_MENU', payload: response.data});

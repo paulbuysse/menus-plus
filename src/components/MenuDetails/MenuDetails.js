@@ -10,7 +10,13 @@ class MenuDetails extends Component {
         heading: this.props.store.user.restaurant_name,
     };
 
-    menuTitle = this.props.store.currentMenuReducer[0]
+    componentDidMount() {
+        this.getDetails();
+    }
+
+    getDetails = () => {
+        this.props.dispatch({type: 'SET_CURRENT_MENU', payload: this.props.match.params.id})
+    }
 
     render() {
         console.log(this.menuTitle)

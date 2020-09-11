@@ -45,13 +45,40 @@ router.put('/:id', (req, res) => {
     console.log('got here', req.body, req.params, req.user.id);
     let id = req.params.id;
     let user_id = req.user.id;
-    let nameToUpdate = req.body.dishName;
+    let itemToUpdate = '';
+    let queryText = '';
 
-    let queryText = `UPDATE "dishes"
+    if (req.body.editName) {
+        itemToUpdate = req.body.dishName
+    } else if (req.body.editPrice) {
+        itemToUpdate = req.body.dishPrice
+    } else if (req.body.editDescription) {
+        itemToUpdate = req.body.dishDescription
+    } else if (req.body.editImg) {
+        itemToUpdate = req.body.dishImg
+    };
+
+    if (req.body.editName) {
+        queryText = `UPDATE "dishes"
     SET "name" = $1
-    WHERE "user_id" = $2 AND "id" = $3;`;
+    WHERE "user_id" = $2 AND "id" = $3;`
+    } else if (req.body.editPrice) {
+        queryText = `UPDATE "dishes"
+    SET "price" = $1
+    WHERE "user_id" = $2 AND "id" = $3;`
+    } else if (req.body.editDescription) {
+        queryText = `UPDATE "dishes"
+    SET "description" = $1
+    WHERE "user_id" = $2 AND "id" = $3;`
+    } else if (req.body.editImg) {
+        queryText = `UPDATE "dishes"
+    SET "img_url" = $1
+    WHERE "user_id" = $2 AND "id" = $3;`
+    };
 
-    pool.query(queryText, [nameToUpdate, user_id, id]).then((result) => {
+    console.log(queryText, itemToUpdate, user_id, id);
+
+    pool.query(queryText, [itemToUpdate, user_id, id]).then((result) => {
         res.sendStatus(201);
     }).catch((error) => {
         console.log('error in put req', error);
