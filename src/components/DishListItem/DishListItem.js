@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 import './DishListItem.css'
 
@@ -18,6 +20,30 @@ class DishListItem extends Component {
         dishId: this.props.dish.id,
     };
 
+    handleDelete = () => {
+        confirmAlert({
+            title: 'Confirm delete',
+            message: 'Are you sure to delete this?',
+            buttons: [
+                {
+                    label: 'Yes',
+                    onClick: () => { alert('Dish deleted.'); this.deleteDish(); }
+                },
+                {
+                    label: 'No',
+                    onClick: () => alert('Nothing deleted.')
+                }
+            ]
+        });
+    };
+
+    deleteDish = () => {
+        console.log('this runs', this.state);
+        this.props.dispatch({ type: 'DELETE_DISH', payload: this.state.dishId });
+
+        this.props.dispatch({ type: 'FETCH_DISHES' });
+    }
+
     handleEdit = (event) => {
         if (event.target.value === '1') {
             this.setState({ ...this.state, selectOption: event.target.value, editName: true });
@@ -32,8 +58,22 @@ class DishListItem extends Component {
     }
 
     handleSave = () => {
-        this.props.dispatch({type: 'UPDATE_DISH', payload: this.state})
+        this.props.dispatch({ type: 'UPDATE_DISH', payload: this.state })
 
+        this.setState({
+            editName: false,
+            editPrice: false,
+            editDescription: false,
+            editImg: false,
+            selectOption: 0,
+            dishName: this.props.dish.name,
+            dishPrice: this.props.dish.price,
+            dishDescription: this.props.dish.description,
+            dishImg: this.props.dish.img_url
+        })
+    }
+
+    handleCancel = () => {
         this.setState({
             editName: false,
             editPrice: false,
@@ -57,7 +97,7 @@ class DishListItem extends Component {
                     <td><input onChange={(event) => { this.setState({ ...this.state, dishPrice: event.target.value }) }} /></td> :
                     <td>${this.props.dish.price}</td>}
                 {this.state.editDescription ?
-                    <td><input onChange={(event) => { this.setState({ ...this.state, dishDescription: event.target.value }) }} /></td> :
+                    <td><textarea onChange={(event) => { this.setState({ ...this.state, dishDescription: event.target.value }) }} /></td> :
                     <td>{this.props.dish.description}</td>}
                 {this.state.editImg ?
                     <td><input onChange={(event) => { this.setState({ ...this.state, dishImg: event.target.value }) }} /></td> :
@@ -65,14 +105,20 @@ class DishListItem extends Component {
 
                 <td>
                     {this.state.selectOption ?
-                        <button onClick={() => {this.handleSave()}}>Save</button> :
+                    <>
+                        <button onClick={() => { this.handleSave() }}>Save</button> 
+                        <button onClick={() => this.handleCancel()}>Cancel</button></>:
+                        <>
                         <select onChange={(event) => { this.handleEdit(event) }}>
                             <option value="0">Edit...</option>
                             <option value="1">Dish Name</option>
                             <option value="2">Price</option>
                             <option value="3">Description</option>
                             <option value="4">Image Url</option>
-                        </select>}
+                        </select>
+                        <div className='container'>
+                            <button className="deleteBtn" onClick={this.handleDelete}>Delete</button>
+                        </div> </>}
 
                 </td>
             </tr>

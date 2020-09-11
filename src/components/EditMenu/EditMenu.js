@@ -12,9 +12,26 @@ class EditMenu extends Component {
         heading: 'Edit Menu Component',
     };
 
+    componentDidMount() {
+        this.getDetails();
+    }
+
+    getDetails = () => {
+        this.props.dispatch({type: 'SET_CURRENT_MENU', payload: this.props.match.params.id})
+    }
+
     render() {
         return (
             <div>
+                <div className="menuInfoBar">
+                <Link className="menuEditLink" to={`/menu/details/${this.props.match.params.id}`}>
+                        Back
+                    </Link>
+
+                    <h2>{this.props.store.user.restaurant_name}</h2>
+
+                </div>
+
                 <div className="sideBar">
                     <Link className="sideLinkBigTop" to="/add/menu">
                         Create New Menu
@@ -32,7 +49,7 @@ class EditMenu extends Component {
                 </div>
                 <h2>{this.state.heading}</h2>
 
-            <EditMenuAddDish menuId={this.props.match.params.id} history={this.props.history}/>
+                <EditMenuAddDish menuId={this.props.match.params.id} history={this.props.history} />
 
                 <table>
                     <thead>
@@ -46,8 +63,9 @@ class EditMenu extends Component {
                         {this.props.store.currentMenuReducer.map((dish) => {
                             return (
                                 <EditMenuItem
-                                dish={dish}
-                                history={this.props.history}
+                                    dish={dish}
+                                    history={this.props.history}
+                                    match={this.props.match.params.id}
                                 />
                             )
                         })}

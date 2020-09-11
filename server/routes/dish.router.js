@@ -17,6 +17,30 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+router.delete('/delete/:id', (req, res) => {
+    let queryText = `DELETE FROM "menus_dishes"
+    WHERE "dish_id" = $1;`;
+    
+    let deletedId = req.params.id;
+
+    pool.query(queryText, [deletedId]).then((result) => {
+        res.sendStatus(201);
+    }).catch((error) => {
+        console.log('error deleting dish', error);
+        res.sendStatus(500);
+    });
+
+    let otherQueryText = `DELETE FROM "dishes"
+    WHERE "id" = $1;`;
+
+    pool.query(otherQueryText, [deletedId]).then((result) => {
+        res.sendStatus(201);
+    }).catch((error) => {
+        console.log('error deleting dish', error);
+        res.sendStatus(500);
+    });    
+})
+
 /**
  * GET route template
  */
@@ -24,7 +48,8 @@ router.get('/', (req, res) => {
   // GET route code here
   let id = req.user.id;
   let queryText = `SELECT * FROM "dishes"
-                   WHERE "user_id" = $1;`;
+                   WHERE "user_id" = $1
+                   ORDER BY "id";`;
     
     pool.query(queryText, [id]).then(result => {
         res.send(result.rows);

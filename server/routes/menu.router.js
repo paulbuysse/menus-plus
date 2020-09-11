@@ -1,11 +1,14 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {
+  rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
 
 /**
  * GET route template
  */
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
   // GET route code here
   let id = req.user.id;
   const queryText = `SELECT "menus".title, "menus".id FROM "menus"
@@ -22,7 +25,7 @@ router.get('/:id', (req, res) => {
 /**
  * POST route template
  */
-router.post('/:id', (req, res) => {
+router.post('/:id', rejectUnauthenticated, (req, res) => {
   // POST route code here
   let dishToAdd = req.body;
   let values = [dishToAdd.selectedDish, dishToAdd.menu_id]
@@ -39,5 +42,11 @@ router.post('/:id', (req, res) => {
   
  
 });
+
+router.post('/new/menu', (req, res) => {
+  let newMenu = req.body;
+  console.log(newMenu, req.body);
+  res.sendStatus(500);
+})
 
 module.exports = router;

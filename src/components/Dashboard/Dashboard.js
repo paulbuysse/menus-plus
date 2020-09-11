@@ -20,8 +20,15 @@ class Dashboarder extends Component {
     render() {
         return (
             <div>
+
+                <div className="menuInfoBar">
+
+                    <h2>{this.props.store.user.restaurant_name}</h2>
+
+                </div>
+
                 <div className="sideBar">
-                    <Link className="sideLinkBig" to="/add/menu">
+                    <Link className="sideLinkBigTop" to="/add/menu">
                         Create New Menu
                     </Link>
                     <Link className="sideLinkBig" to="/add/dish">
@@ -43,9 +50,9 @@ class Dashboarder extends Component {
 
                 {this.props.store.menuReducer.map((menu, i) => {
                     return (
-                        <DashboardItem 
-                        i={i}
-                        menu={menu}
+                        <DashboardItem
+                            i={i}
+                            menu={menu}
                         />
                     )
                 })}

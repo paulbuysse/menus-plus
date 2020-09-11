@@ -12,8 +12,21 @@ function* fetchMenu(action) {
   }
 }
 
+function* createNewMenu(action) {
+  try {
+    console.log(action.payload);
+      let response = yield axios.post(`/api/menu/new/menu`, action.payload);
+      console.log(response.data);
+    
+      //yield put({type: 'SET_MENUS', payload: response.data});
+  } catch (error) {
+    console.log('Menu get request failed', error);
+  }
+}
+
 function* menuSaga() {
   yield takeLatest('FETCH_MENUS', fetchMenu);
+  yield takeLatest('CREATE_NEW_MENU', createNewMenu)
 }
 
 export default menuSaga;

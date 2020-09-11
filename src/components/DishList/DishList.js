@@ -24,6 +24,12 @@ class DishList extends Component {
   render() {
     return (
       <div>
+        <div className="menuInfoBar">
+
+          <h2>{this.props.store.user.restaurant_name}</h2>
+
+        </div>
+
         <div className="sideBar">
           <Link className="sideLinkBigTop" to="/add/menu">
             Create New Menu
@@ -54,8 +60,8 @@ class DishList extends Component {
           <tbody>
             {this.props.store.dishes.map((dish) => {
               return (
-                <DishListItem 
-                dish={dish}
+                <DishListItem
+                  dish={dish}
                 />
               )
             })}

@@ -26,7 +26,6 @@ class EditMenuAddDish extends Component {
         this.props.dispatch({type: 'ADD_TO_MENU', payload: this.state})
         this.props.dispatch({type: 'FETCH_MENUS', payload: { id: this.state.menu_id, user_id: this.props.store.user.id}})
         this.props.dispatch({type: 'SET_CURRENT_MENU', payload: { id: this.state.menu_id, user_id: this.props.store.user.id}});
-        this.props.history.push(`/edit/menu/${this.props.menuId}`);
         alert('Changes Saved!');
     }
 

@@ -10,10 +10,10 @@ class EditMenuItem extends Component {
     handleRemove = (id) => {
         console.log(id)
         this.props.dispatch({type: 'REMOVE_DISH', payload: id})
+        alert('Changes Saved!');
         this.props.dispatch({type: 'FETCH_MENUS', payload: { id: this.props.dish.menu_id, user_id: this.props.store.user.id}})
         this.props.dispatch({type: 'SET_CURRENT_MENU', payload: { id: this.props.dish.menu_id, user_id: this.props.store.user.id}});
-        this.props.history.push(`/edit/menu/${this.props.menuId}`);
-        alert('Changes Saved!');
+        this.props.history.push(`/edit/menu/${this.props.match}`);
     }
 
 
