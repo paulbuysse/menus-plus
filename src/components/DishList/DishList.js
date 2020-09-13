@@ -4,6 +4,9 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import { Link } from 'react-router-dom';
 import DishListItem from '../DishListItem/DishListItem.js';
 
+//importing css
+import './DishList.css';
+
 class DishList extends Component {
   state = {
     heading: 'Dish List Component',
@@ -47,7 +50,7 @@ class DishList extends Component {
         </div>
         < h2 > {this.state.heading}</h2>
 
-        <table>
+        <table className="dishTable">
           <thead>
             <tr>
               <th>Dish Name</th>

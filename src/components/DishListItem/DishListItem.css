@@ -1,4 +1,10 @@
 .dishImg {
     height:200px;
-    width:200px;
+    width:300px;
+    border: 2px solid black;
+}
+
+.dishesMenusTable {
+    background-color: #ffffe6;
+    
 }

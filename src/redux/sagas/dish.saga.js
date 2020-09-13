@@ -12,8 +12,20 @@ function* fetchDishes(action) {
   }
 }
 
+function* createDish(action) {
+    try {
+        let response = yield axios.post(`/api/dish`, action.payload);
+        console.log(response.data);
+      
+        //yield put({type: 'SET_DISHES', payload: response.data});
+    } catch (error) {
+      console.log('Dish get request failed', error);
+    }
+  }
+
 function* dishSaga() {
   yield takeLatest('FETCH_DISHES', fetchDishes);
+  yield takeLatest('ADD_NEW_DISH', createDish);
 }
 
 export default dishSaga;

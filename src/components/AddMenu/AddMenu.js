@@ -11,7 +11,7 @@ class AddMenu extends Component {
   handleNewMenu = () => {
     console.log(this.state.newMenuName);
 
-    this.props.dispatch({type: 'CREATE_NEW_MENU', payload: this.state.newMenuName})
+    this.props.dispatch({type: 'CREATE_NEW_MENU', payload: this.state})
 
     
   }

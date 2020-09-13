@@ -5,8 +5,15 @@ import { Link } from 'react-router-dom';
 
 class CreateDish extends Component {
   state = {
-    heading: 'Create Dish Component',
+    newDishName: '',
+    newDishPrice: 0,
+    newDishDescription: '',
+    newDishImg: '',
   };
+
+  handleNewDish = () => {
+    this.props.dispatch({type: 'ADD_NEW_DISH', payload: this.state})
+  }
 
   render() {
     return (
@@ -32,7 +39,14 @@ class CreateDish extends Component {
             See Dishes
           </Link>
         </div>
-        <h2>{this.state.heading}</h2>
+    <h2>{this.state.newDishName}{this.state.newDishPrice}{this.state.newDishImg}{this.state.newDishDescription}</h2>
+
+        <input placeholder="Dish Name" onChange={(event) => {this.setState({...this.state, newDishName: event.target.value})}}/>
+        <input placeholder="Price" onChange={(event) => {this.setState({...this.state, newDishPrice: event.target.value})}}/>
+        <input placeholder="Image URL" onChange={(event) => {this.setState({...this.state, newDishImg: event.target.value})}}/>
+        <textarea placeholder="Description" onChange={(event) => {this.setState({...this.state, newDishDescription: event.target.value})}}/>
+        <button onClick={() => {this.handleNewDish()}}>Create Dish</button>
+
       </div>
     );
   }

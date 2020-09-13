@@ -64,6 +64,19 @@ router.get('/', (req, res) => {
  */
 router.post('/', (req, res) => {
   // POST route code here
+  let queryText = `INSERT INTO "dishes" ("user_id", "name", "price", "description", "img_url")
+  VALUES ($1, $2, $3, $4, $5);`
+  let newName = req.body.newDishName;
+  let newPrice = req.body.newDishPrice;
+  let newImg = req.body.newDishImg;
+  let newDesc = req.body.newDishDescription;
+
+  pool.query(queryText, [req.user.id, newName, newPrice, newDesc, newImg]).then(result => {
+      res.sendStatus(201);
+  }).catch(error => {
+      console.log('error posting new dish', error);
+      res.sendStatus(500);
+  })
 });
 
 router.put('/:id', (req, res) => {

@@ -49,7 +49,7 @@ class EditMenu extends Component {
                 </div>
                 <h2>{this.state.heading}</h2>
 
-                <EditMenuAddDish menuId={this.props.match.params.id} history={this.props.history} />
+                <EditMenuAddDish menuId={this.props.match.params.id} history={this.props.history} match={this.props.match.params.id} />
 
                 <table>
                     <thead>

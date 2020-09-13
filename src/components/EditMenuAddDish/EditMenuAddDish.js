@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import EditMenuAddDishItem from '../EditMenuAddDishItem/EditMenuAddDishItem';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 class EditMenuAddDish extends Component {
     state = {
@@ -29,6 +31,28 @@ class EditMenuAddDish extends Component {
         alert('Changes Saved!');
     }
 
+    handleDelete = () => {
+        confirmAlert({
+            title: 'Confirm delete',
+            message: 'Are you sure to delete this?',
+            buttons: [
+                {
+                    label: 'Yes',
+                    onClick: () => { alert('Menu deleted.'); this.handleMenuDelete(); }
+                },
+                {
+                    label: 'No',
+                    onClick: () => alert('Nothing deleted.')
+                }
+            ]
+        });
+    };
+
+    handleMenuDelete = () => {
+        this.props.dispatch({type: 'DELETE_MENU', payload: this.props.match});
+        this.props.history.push('/dashboard');
+    }
+
     render() {
         return (
             <div>
@@ -47,6 +71,7 @@ class EditMenuAddDish extends Component {
                 </select>
 
                 <button onClick={() => this.handleAdd()}>Add To Menu</button>
+                <button onClick={() => {this.handleDelete()}}>Delete Menu</button>
             </div>
         );
     }
