@@ -9,7 +9,7 @@ router.get('/:id', (req, res) => {
   // GET route code here
   console.log('check this out', req.params, req.params.id, req.body, req.user.id);
   let user_id = req.user.id;
-  let id = req.params.id;
+  let id = req.params.id || req.params.menu_id;
   const queryText = `SELECT * FROM "dishes"
   JOIN "menus_dishes" ON "dishes".id = "menus_dishes".dish_id
   JOIN "menus" ON "menus_dishes".menu_id = "menus".id

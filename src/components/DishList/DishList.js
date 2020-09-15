@@ -20,9 +20,9 @@ class DishList extends Component {
     this.props.dispatch({ type: 'FETCH_DISHES' });
   }
 
-  editDish = (dishId) => {
-    this.props.history.push(`/edit/dish/${dishId}`)
-  }
+  // editDish = (dishId) => {
+  //   this.props.history.push(`/edit/dish/${dishId}`)
+  // }
 
   render() {
     return (
@@ -65,6 +65,7 @@ class DishList extends Component {
               return (
                 <DishListItem
                   dish={dish}
+                  fetchDishes={this.fetchDishes}
                 />
               )
             })}

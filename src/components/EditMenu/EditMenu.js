@@ -10,6 +10,7 @@ import './EditMenu.css';
 class EditMenu extends Component {
     state = {
         heading: 'Edit Menu Component',
+        details: this.props.store.currentMenuReducer,
     };
 
     componentDidMount() {
@@ -49,9 +50,14 @@ class EditMenu extends Component {
                 </div>
                 <h2>{this.state.heading}</h2>
 
-                <EditMenuAddDish menuId={this.props.match.params.id} history={this.props.history} match={this.props.match.params.id} />
+                <EditMenuAddDish 
+                menuId={this.props.match.params.id} 
+                history={this.props.history} 
+                match={this.props.match.params.id} 
+                getDetails={this.getDetails}
+                />
 
-                <table>
+                <table className="dishTable">
                     <thead>
                         <tr>
                             <th>Dish Name</th>
@@ -66,6 +72,7 @@ class EditMenu extends Component {
                                     dish={dish}
                                     history={this.props.history}
                                     match={this.props.match.params.id}
+                                    details={this.state.details}
                                 />
                             )
                         })}

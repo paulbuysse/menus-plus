@@ -1,10 +1,10 @@
 .dishImg {
     height:200px;
     width:300px;
-    border: 2px solid black;
+    border: 2px solid;
 }
 
-.dishesMenusTable {
+.oddClass {
     background-color: #ffffe6;
     
 }

@@ -25,9 +25,8 @@ class EditMenuAddDish extends Component {
     }
 
     handleAdd = () => {
-        this.props.dispatch({type: 'ADD_TO_MENU', payload: this.state})
-        this.props.dispatch({type: 'FETCH_MENUS', payload: { id: this.state.menu_id, user_id: this.props.store.user.id}})
-        this.props.dispatch({type: 'SET_CURRENT_MENU', payload: { id: this.state.menu_id, user_id: this.props.store.user.id}});
+        this.props.dispatch({ type: 'ADD_TO_MENU', payload: this.state })
+        //this.props.getDetails();
         alert('Changes Saved!');
     }
 
@@ -49,14 +48,14 @@ class EditMenuAddDish extends Component {
     };
 
     handleMenuDelete = () => {
-        this.props.dispatch({type: 'DELETE_MENU', payload: this.props.match});
+        this.props.dispatch({ type: 'DELETE_MENU', payload: this.props.match });
         this.props.history.push('/dashboard');
     }
 
     render() {
         return (
-            <div>
-                <select onChange={(event) => { this.setState({ ...this.state, selectedDish: event.target.value }) }}>
+            <div className="editMenuForm">
+                <select className="dropdown" onChange={(event) => { this.setState({ ...this.state, selectedDish: event.target.value }) }}>
                     <option value="0">Select a Dish</option>
                     {this.props.store.dishes.map((dishSelection) => {
                         return (
@@ -70,8 +69,8 @@ class EditMenuAddDish extends Component {
                     }
                 </select>
 
-                <button onClick={() => this.handleAdd()}>Add To Menu</button>
-                <button onClick={() => {this.handleDelete()}}>Delete Menu</button>
+                <button className="addBtn" onClick={() => this.handleAdd()}>Add To Menu</button>
+                <button className="dltBtn" onClick={() => { this.handleDelete() }}>Delete Menu</button>
             </div>
         );
     }

@@ -17,7 +17,7 @@ function* createDish(action) {
         let response = yield axios.post(`/api/dish`, action.payload);
         console.log(response.data);
       
-        //yield put({type: 'SET_DISHES', payload: response.data});
+        yield put({type: 'FETCH_DISHES'})
     } catch (error) {
       console.log('Dish get request failed', error);
     }

@@ -14,6 +14,7 @@
     margin-right: 60px;
     text-align: center;
     margin-top: 40px;
+    box-shadow: 10px 10px 8px 10px #888888;
 }
 
 .dishItem {
@@ -44,4 +45,49 @@
 
 .menuEditLink:hover {
     background-color: #997300;
+}
+
+.addBtn {
+    display: inline-block;
+    padding: 7px 15px;
+    border-color: #014041;
+    border-width: 1px 1px 3px;
+    border-radius: 3px;
+    background-color: #cc9900;
+    color: #f8f8f8;
+    /* font-size: 1.1rem; */
+    outline: 0;
+    cursor: pointer;
+}
+
+.addBtn:hover {
+    background-color: #997300;
+}
+
+.dltBtn {
+    display: inline-block;
+    padding: 7px 15px;
+    border-color: #014041;
+    border-width: 1px 1px 3px;
+    border-radius: 3px;
+    background-color: #b30000;
+    color: #f8f8f8;
+    /* font-size: 1.1rem; */
+    outline: 0;
+    cursor: pointer;
+    float: right;
+}
+
+.dltBtn:hover {
+    background-color: #800000;
+}
+
+.dropdown {
+    display: inline-block;
+    padding: 6px 15px;
+    border-color: #014041;
+    border-width: 1px 1px 3px;
+    border-radius: 3px;
+    outline: 0;
+    cursor: pointer;
 }

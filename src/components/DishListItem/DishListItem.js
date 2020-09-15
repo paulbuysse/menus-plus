@@ -20,6 +20,10 @@ class DishListItem extends Component {
         dishId: this.props.dish.id,
     };
 
+    componentDidMount() {
+        this.props.fetchDishes();
+    }
+
     handleDelete = () => {
         confirmAlert({
             title: 'Confirm delete',
@@ -38,10 +42,7 @@ class DishListItem extends Component {
     };
 
     deleteDish = () => {
-        console.log('this runs', this.state);
         this.props.dispatch({ type: 'DELETE_DISH', payload: this.state.dishId });
-
-        this.props.dispatch({ type: 'FETCH_DISHES' });
     }
 
     handleEdit = (event) => {
@@ -89,7 +90,7 @@ class DishListItem extends Component {
 
     render() {
         return (
-            <tr className="dishesMenusTable">
+            <tr className="dishesTr">
                 {this.state.editName ?
                     <td><input onChange={(event) => { this.setState({ ...this.state, dishName: event.target.value }) }} /></td> :
                     <td>{this.props.dish.name}</td>}

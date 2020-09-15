@@ -53,3 +53,8 @@
 .sideLinkBigTop:hover {
     background-color: #997300;
 }
+
+.editMenuForm {
+    text-align: center;
+    padding: 30px;
+}

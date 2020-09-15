@@ -22,23 +22,26 @@ router.delete('/delete/:id', (req, res) => {
     WHERE "dish_id" = $1;`;
     
     let deletedId = req.params.id;
+    console.log(deletedId);
 
     pool.query(queryText, [deletedId]).then((result) => {
+        console.log(result);
+        let otherQueryText = `DELETE FROM "dishes"
+        WHERE "id" = $1;`;
+    
+        pool.query(otherQueryText, [deletedId]).then((result) => {
+            console.log(result);
+            res.sendStatus(201);
+        }).catch((error) => {
+            console.log('error deleting dish', error);
+            res.sendStatus(500);
+        });  
         res.sendStatus(201);
     }).catch((error) => {
-        console.log('error deleting dish', error);
+        console.log('error deleting dish junction', error);
         res.sendStatus(500);
     });
-
-    let otherQueryText = `DELETE FROM "dishes"
-    WHERE "id" = $1;`;
-
-    pool.query(otherQueryText, [deletedId]).then((result) => {
-        res.sendStatus(201);
-    }).catch((error) => {
-        console.log('error deleting dish', error);
-        res.sendStatus(500);
-    });    
+  
 })
 
 /**
@@ -80,7 +83,6 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-    console.log('got here', req.body, req.params, req.user.id);
     let id = req.params.id;
     let user_id = req.user.id;
     let itemToUpdate = '';

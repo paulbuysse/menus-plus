@@ -6,7 +6,7 @@ function* fetchMenu(action) {
     let response = yield axios.get(`/api/menu/${action.payload}`);
     console.log(response.data);
 
-    yield put({ type: 'SET_MENUS', payload: response.data });
+    yield put({ type: 'SET_CURRENT_MENU', payload: response.data });
   } catch (error) {
     console.log('Menu get request failed', error);
   }

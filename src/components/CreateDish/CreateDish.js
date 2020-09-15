@@ -39,7 +39,8 @@ class CreateDish extends Component {
             See Dishes
           </Link>
         </div>
-    <h2>{this.state.newDishName}{this.state.newDishPrice}{this.state.newDishImg}{this.state.newDishDescription}</h2>
+    <h2>{this.state.newDishName}{this.state.newDishPrice}{this.state.newDishDescription}</h2>
+    <img src={this.state.newDishImg}></img>
 
         <input placeholder="Dish Name" onChange={(event) => {this.setState({...this.state, newDishName: event.target.value})}}/>
         <input placeholder="Price" onChange={(event) => {this.setState({...this.state, newDishPrice: event.target.value})}}/>
