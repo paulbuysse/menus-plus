@@ -20,10 +20,6 @@ class DishList extends Component {
     this.props.dispatch({ type: 'FETCH_DISHES' });
   }
 
-  // editDish = (dishId) => {
-  //   this.props.history.push(`/edit/dish/${dishId}`)
-  // }
-
   render() {
     return (
       <div>

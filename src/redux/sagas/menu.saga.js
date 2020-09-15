@@ -6,7 +6,8 @@ function* fetchMenu(action) {
     let response = yield axios.get(`/api/menu/${action.payload}`);
     console.log(response.data);
 
-    yield put({ type: 'SET_CURRENT_MENU', payload: response.data });
+    yield put({type: 'SET_MENUS', payload: response.data});
+    //yield put({ type: 'SET_CURRENT_MENU', payload: response.data });
   } catch (error) {
     console.log('Menu get request failed', error);
   }
@@ -36,10 +37,23 @@ function* deleteMenu(action) {
   }
 }
 
+function* setCurrentMenu(action) {
+  try {
+      let response = yield axios.get(`/api/current/menu/${action.payload}`);
+      console.log(response.data);
+    
+      yield put({type: 'APPLY_CURRENT_MENU', payload: response.data});
+  } catch (error) {
+    console.log('Menu get request failed', error);
+  }
+}
+
+
 function* menuSaga() {
   yield takeLatest('FETCH_MENUS', fetchMenu);
   yield takeLatest('CREATE_NEW_MENU', createNewMenu);
   yield takeLatest('DELETE_MENU', deleteMenu);
+  yield takeLatest('SET_CURRENT_MENU', setCurrentMenu);
 }
 
 export default menuSaga;
