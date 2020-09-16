@@ -28,7 +28,6 @@
     background-color: #222;
     display: inline-block;
     width: 88.13%;
-    /* float: right; */
     font-size: 10px;
 }
 
@@ -55,7 +54,6 @@
     border-radius: 3px;
     background-color: #cc9900;
     color: #f8f8f8;
-    /* font-size: 1.1rem; */
     outline: 0;
     cursor: pointer;
 }
@@ -72,7 +70,6 @@
     border-radius: 3px;
     background-color: #b30000;
     color: #f8f8f8;
-    /* font-size: 1.1rem; */
     outline: 0;
     cursor: pointer;
     float: right;

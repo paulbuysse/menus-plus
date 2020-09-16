@@ -67,19 +67,18 @@ router.delete('/delete/:id', (req, res) => {
   WHERE "menu_id" = $1;`;
 
   pool.query(queryText, [menuToDelete]).then(result => {
+    let otherQueryText = `DELETE FROM "menus"
+    WHERE "id" = $1;`
+  
+    pool.query(otherQueryText, [menuToDelete]).then(result => {
+      res.sendStatus(201);
+    }).catch(error => {
+      console.log('error in deleting menu', error);
+      res.sendStatus(500);
+    })
     res.sendStatus(201);
   }).catch(error => {
     console.log('error in deleting menu link', error);
-    res.sendStatus(500);
-  });
-  
-  let otherQueryText = `DELETE FROM "menus"
-  WHERE "id" = $1;`
-
-  pool.query(otherQueryText, [menuToDelete]).then(result => {
-    res.sendStatus(201);
-  }).catch(error => {
-    console.log('error in deleting menu', error);
     res.sendStatus(500);
   });
 })

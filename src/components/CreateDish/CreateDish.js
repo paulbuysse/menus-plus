@@ -3,16 +3,30 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { Link } from 'react-router-dom';
 
+import './CreateDish.css'
+
 class CreateDish extends Component {
   state = {
     newDishName: '',
-    newDishPrice: 0,
+    newDishPrice: '',
     newDishDescription: '',
     newDishImg: '',
   };
 
   handleNewDish = () => {
-    this.props.dispatch({type: 'ADD_NEW_DISH', payload: this.state})
+    if (this.state.newDishName !== '' && this.state.newDishPrice !== '' && this.state.newDishDescription !== '') {
+    this.props.dispatch({ type: 'ADD_NEW_DISH', payload: this.state })
+    alert('Dish Created!');
+
+    this.setState({
+      newDishName: '',
+      newDishPrice: '',
+      newDishDescription: '',
+      newDishImg: '',
+    })
+  } else {
+    alert('Please fill out required fields!*')
+  }
   }
 
   render() {
@@ -39,15 +53,27 @@ class CreateDish extends Component {
             See Dishes
           </Link>
         </div>
-    <h2>{this.state.newDishName}{this.state.newDishPrice}{this.state.newDishDescription}</h2>
-    <img src={this.state.newDishImg}></img>
-
-        <input placeholder="Dish Name" onChange={(event) => {this.setState({...this.state, newDishName: event.target.value})}}/>
-        <input placeholder="Price" onChange={(event) => {this.setState({...this.state, newDishPrice: event.target.value})}}/>
-        <input placeholder="Image URL" onChange={(event) => {this.setState({...this.state, newDishImg: event.target.value})}}/>
-        <textarea placeholder="Description" onChange={(event) => {this.setState({...this.state, newDishDescription: event.target.value})}}/>
-        <button onClick={() => {this.handleNewDish()}}>Create Dish</button>
-
+        <div className="pageInstructions">
+          <p>-- Enter the name, price, image address URL, and menu description below.</p>
+          <p>-- Check the image preview to confirm your image is displaying correctly.</p>
+          <p>-- When everything looks correct, click "Create Dish" on the bottom right.</p>
+        </div>
+        <div className="addDishBody">
+          <input className="createInput" value={this.state.newDishName} placeholder="*Dish Name" onChange={(event) => { this.setState({ ...this.state, newDishName: event.target.value }) }} />
+          <input className="createInput" type="number" value={this.state.newDishPrice} placeholder="*Price" onChange={(event) => { this.setState({ ...this.state, newDishPrice: event.target.value }) }} />
+          <input className="createInput" value={this.state.newDishImg} placeholder="Image URL" onChange={(event) => { this.setState({ ...this.state, newDishImg: event.target.value }) }} />
+          <br />
+          <textarea value={this.state.newDishDescription} rows="7" cols="50" className="createTextArea" placeholder="*Description" onChange={(event) => { this.setState({ ...this.state, newDishDescription: event.target.value }) }} />
+          <br />
+        </div>
+        <div className="imgPreview">
+          <h4>Image Preview:</h4>
+          <img className="exampleImg" src={this.state.newDishImg}></img>
+        </div>
+        <div className="submitDiv">
+          <p>Click to submit:</p>
+          <button className="addDishBtn" onClick={() => { this.handleNewDish() }}>Create Dish</button>
+        </div>
       </div>
     );
   }

@@ -92,16 +92,16 @@ class DishListItem extends Component {
         return (
             <tr className="dishesTr">
                 {this.state.editName ?
-                    <td><input onChange={(event) => { this.setState({ ...this.state, dishName: event.target.value }) }} /></td> :
+                    <td><input value={this.state.dishName} onChange={(event) => { this.setState({ ...this.state, dishName: event.target.value }) }} /></td> :
                     <td>{this.props.dish.name}</td>}
                 {this.state.editPrice ?
-                    <td><input onChange={(event) => { this.setState({ ...this.state, dishPrice: event.target.value }) }} /></td> :
+                    <td><input value={this.state.dishPrice}  onChange={(event) => { this.setState({ ...this.state, dishPrice: event.target.value }) }} /></td> :
                     <td>${this.props.dish.price}</td>}
                 {this.state.editDescription ?
-                    <td><textarea onChange={(event) => { this.setState({ ...this.state, dishDescription: event.target.value }) }} /></td> :
+                    <td><textarea value={this.state.dishDescription}  onChange={(event) => { this.setState({ ...this.state, dishDescription: event.target.value }) }} /></td> :
                     <td>{this.props.dish.description}</td>}
                 {this.state.editImg ?
-                    <td><input onChange={(event) => { this.setState({ ...this.state, dishImg: event.target.value }) }} /></td> :
+                    <td><input value={this.state.dishImg}  onChange={(event) => { this.setState({ ...this.state, dishImg: event.target.value }) }} /></td> :
                     <td><img className="dishImg" src={this.props.dish.img_url}></img></td>}
 
                 <td>

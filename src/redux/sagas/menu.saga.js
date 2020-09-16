@@ -19,7 +19,7 @@ function* createNewMenu(action) {
     let response = yield axios.post(`/api/menu/new/m`, action.payload);
     console.log(response.data);
 
-    //yield put({type: 'SET_MENUS', payload: response.data});
+    //yield put({type: 'FETCH_MENUS', payload: response.data});
   } catch (error) {
     console.log('Menu get request failed', error);
   }
@@ -31,7 +31,7 @@ function* deleteMenu(action) {
     let response = yield axios.delete(`/api/menu/delete/${action.payload}`);
     console.log(response.data);
 
-    //yield put({type: 'SET_MENUS', payload: response.data});
+    yield put({type: 'FETCH_MENUS', payload: action.payload});
   } catch (error) {
     console.log('Menu get request failed', error);
   }

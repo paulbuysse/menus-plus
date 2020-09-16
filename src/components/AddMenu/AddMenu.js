@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { Link } from 'react-router-dom';
 
+import './AddMenu.css';
+
 class AddMenu extends Component {
   state = {
     newMenuName: ''
@@ -11,9 +13,9 @@ class AddMenu extends Component {
   handleNewMenu = () => {
     console.log(this.state.newMenuName);
 
-    this.props.dispatch({type: 'CREATE_NEW_MENU', payload: this.state})
+    this.props.dispatch({ type: 'CREATE_NEW_MENU', payload: this.state })
 
-    
+
   }
 
   render() {
@@ -41,10 +43,10 @@ class AddMenu extends Component {
           </Link>
         </div>
         <h2>{this.state.newMenuName}</h2>
-
-      <input placeholder="New Menu Name" onChange={(event) => {this.setState({newMenuName: event.target.value})}}/>
-      <button onClick={() => this.handleNewMenu()}>Create Menu</button>
-
+        <div className="newMenuForm">
+          <input placeholder="New Menu Name" onChange={(event) => { this.setState({ newMenuName: event.target.value }) }} />
+          <button onClick={() => this.handleNewMenu()}>Create Menu</button>
+        </div>
       </div>
     );
   }

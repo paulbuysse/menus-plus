@@ -28,6 +28,7 @@ class EditMenuAddDish extends Component {
         this.props.dispatch({ type: 'ADD_TO_MENU', payload: this.state })
         //this.props.getDetails();
         alert('Changes Saved!');
+        this.setState({...this.state, selectedDish: 0})
     }
 
     handleDelete = () => {
@@ -55,7 +56,7 @@ class EditMenuAddDish extends Component {
     render() {
         return (
             <div className="editMenuForm">
-                <select className="dropdown" onChange={(event) => { this.setState({ ...this.state, selectedDish: event.target.value }) }}>
+                <select className="dropdown" value={this.state.selectedDish} onChange={(event) => { this.setState({ ...this.state, selectedDish: event.target.value }) }}>
                     <option value="0">Select a Dish</option>
                     {this.props.store.dishes.map((dishSelection) => {
                         return (
