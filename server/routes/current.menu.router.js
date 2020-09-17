@@ -1,11 +1,14 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {
+  rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
 
 /**
  * GET route template
  */
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
   // GET route code here
   console.log('check this out', req.params, req.params.id, req.body, req.user.id);
   let user_id = req.user.id;

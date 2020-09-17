@@ -15,7 +15,9 @@ class CreateDish extends Component {
 
   handleNewDish = () => {
     if (this.state.newDishName !== '' && this.state.newDishPrice !== '' && this.state.newDishDescription !== '') {
-    this.props.dispatch({ type: 'ADD_NEW_DISH', payload: this.state })
+    
+    //goes to dish saga, takes new dish info
+      this.props.dispatch({ type: 'ADD_NEW_DISH', payload: this.state })
     alert('Dish Created!');
 
     this.setState({

@@ -3,6 +3,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 function* fetchMenu(action) {
   try {
+    //payload is user id
     let response = yield axios.get(`/api/menu/${action.payload}`);
     console.log(response.data);
 
@@ -16,6 +17,7 @@ function* fetchMenu(action) {
 function* createNewMenu(action) {
   try {
     console.log(action.payload);
+    //payload is name of new menu
     let response = yield axios.post(`/api/menu/new/m`, action.payload);
     console.log(response.data);
 
@@ -39,6 +41,7 @@ function* deleteMenu(action) {
 
 function* setCurrentMenu(action) {
   try {
+    //payload is menu id and user id
       let response = yield axios.get(`/api/current/menu/${action.payload}`);
       console.log(response.data);
     

@@ -23,6 +23,9 @@ class LandingPage extends Component {
 
         <div className="grid">
           <div className="grid-col grid-col_8">
+
+            <img src="../.././documentation/images/example-dash.png"></img>
+
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
               id felis metus. Vestibulum et pulvinar tortor. Morbi pharetra

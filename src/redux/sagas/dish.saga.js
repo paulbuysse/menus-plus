@@ -14,6 +14,7 @@ function* fetchDishes(action) {
 
 function* createDish(action) {
     try {
+        //payload is new dish info (name, price, img, description)
         let response = yield axios.post(`/api/dish`, action.payload);
         console.log(response.data);
       

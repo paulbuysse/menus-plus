@@ -1,3 +1,41 @@
-.newMenuForm {
-    background-color: red;
+.newMenuInstructions {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 30px;
+    float: left;
+    margin-left: 5%;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #222;
+    color: white;
+}
+
+.newMenuInput {
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 561px;
+    padding: 30px;
+    float: left;
+    margin-left: 5%;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #cc9900;
+    color: white;
+}
+
+.newMenuSubmit {
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 561px;
+    padding: 30px;
+    float: left;
+    margin-left: 5%;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #222;
+    color: white;
+}
+
+.createMenuBody {
+    text-align: center;
 }

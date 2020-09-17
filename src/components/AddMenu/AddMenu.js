@@ -13,6 +13,7 @@ class AddMenu extends Component {
   handleNewMenu = () => {
     console.log(this.state.newMenuName);
 
+    //takes new menu name and goes to menu saga
     this.props.dispatch({ type: 'CREATE_NEW_MENU', payload: this.state })
 
 
@@ -43,9 +44,18 @@ class AddMenu extends Component {
           </Link>
         </div>
         <h2>{this.state.newMenuName}</h2>
-        <div className="newMenuForm">
-          <input placeholder="New Menu Name" onChange={(event) => { this.setState({ newMenuName: event.target.value }) }} />
-          <button onClick={() => this.handleNewMenu()}>Create Menu</button>
+        <div classNAme="createMenuBody">
+          <div className="newMenuInstructions">
+            <p>--Enter the name of your new menu.</p>
+            <p>--Click "Create Menu" to add the menu to your Dashboard.</p>
+          </div>
+          <div className="newMenuInput">
+            <input className="createInput" placeholder="New Menu Name" onChange={(event) => { this.setState({ newMenuName: event.target.value }) }} />
+          </div>
+          <div className="newMenuSubmit">
+            <p>Click to Create Menu:</p>
+            <button className="addBtn" onClick={() => this.handleNewMenu()}>Create Menu</button>
+          </div>
         </div>
       </div>
     );

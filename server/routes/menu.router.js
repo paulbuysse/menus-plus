@@ -43,7 +43,7 @@ router.post('/:id', rejectUnauthenticated, (req, res) => {
  
 });
 
-router.post('/new/m', (req, res) => {
+router.post('/new/m', rejectUnauthenticated, (req, res) => {
   let newMenu = req.body.newMenuName;
   let userId = req.user.id;
   let queryText = `INSERT INTO "menus" ("user_id", "title")
@@ -61,7 +61,7 @@ router.post('/new/m', (req, res) => {
   
 });
 
-router.delete('/delete/:id', (req, res) => {
+router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
   let menuToDelete = req.params.id;
   let queryText = `DELETE FROM "menus_dishes"
   WHERE "menu_id" = $1;`;

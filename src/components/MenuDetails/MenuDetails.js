@@ -8,6 +8,7 @@ import './MenuDetails.css';
 class MenuDetails extends Component {
     state = {
         heading: this.props.store.user.restaurant_name,
+        menuName: this.props.store.currentMenuReducer.menuTitle
     };
 
     componentDidMount() {
@@ -15,7 +16,7 @@ class MenuDetails extends Component {
     }
 
     getDetails = () => {
-        this.props.dispatch({type: 'SET_CURRENT_MENU', payload: this.props.match.params.id})
+        this.props.dispatch({ type: 'SET_CURRENT_MENU', payload: this.props.match.params.id })
     }
 
     render() {
@@ -29,6 +30,7 @@ class MenuDetails extends Component {
                         Edit Menu
                     </Link>
                     <h2>{this.state.heading}</h2>
+                    <h3>{this.state.menuName}</h3>
 
                 </div>
 
@@ -48,20 +50,9 @@ class MenuDetails extends Component {
                     </Link>
                 </div>
 
-                {/* <div className="menuInfoBar">
-
-                <Link className="menuEditLink" to="/edit/menu">
-                        Edit Menu
-                    </Link>
-                    <h2>{this.state.heading}</h2>
-                    
-                </div> */}
-
-                {/* {JSON.stringify(this.menuTitle)} */}
                 <div>
                     <div className="menuPage">
                         <h1>{this.state.heading}</h1>
-                        <h2></h2>
                         {this.props.store.currentMenuReducer.map((dish) => {
                             return (
                                 <div className="dishItem">

@@ -14,6 +14,7 @@ class Dashboarder extends Component {
 
     getMenus = () => {
         console.log(this.props.store.user.id)
+        //goes to menu saga
         this.props.dispatch({ type: 'FETCH_MENUS', payload: this.props.store.user.id })
     }
 

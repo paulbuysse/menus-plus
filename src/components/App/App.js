@@ -59,7 +59,7 @@ class App extends Component {
               // logged in shows UserPage else shows LoginPage
               exact
               path="/user"
-              component={UserPage}
+              component={Dashboarder}
             />
 
             <ProtectedRoute

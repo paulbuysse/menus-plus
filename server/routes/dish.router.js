@@ -1,8 +1,11 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {
+    rejectUnauthenticated,
+  } = require('../modules/authentication-middleware');
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
     let idToDelete = req.params.id;
     console.log(idToDelete);
 
@@ -17,7 +20,7 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-router.delete('/delete/:id', (req, res) => {
+router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
     let queryText = `DELETE FROM "menus_dishes"
     WHERE "dish_id" = $1;`;
     
@@ -47,7 +50,7 @@ router.delete('/delete/:id', (req, res) => {
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
   // GET route code here
   let id = req.user.id;
   let queryText = `SELECT * FROM "dishes"
@@ -65,7 +68,7 @@ router.get('/', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
   // POST route code here
   let queryText = `INSERT INTO "dishes" ("user_id", "name", "price", "description", "img_url")
   VALUES ($1, $2, $3, $4, $5);`
@@ -82,7 +85,7 @@ router.post('/', (req, res) => {
   })
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', rejectUnauthenticated, (req, res) => {
     let id = req.params.id;
     let user_id = req.user.id;
     let itemToUpdate = '';

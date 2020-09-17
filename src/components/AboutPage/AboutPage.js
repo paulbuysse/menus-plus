@@ -8,6 +8,7 @@ import React from 'react';
 const AboutPage = () => (
   <div className="container">
     <div>
+      <img src="../example-dash.png"></img>
       <p>This about page is for anyone to read!</p>
     </div>
   </div>
